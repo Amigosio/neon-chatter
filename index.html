@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Chatter & Games!</title>
+    <style>
+        :root {
+            --bg-color: #1a1a2e;
+            --primary: #ff007f;
+            --secondary: #00f0ff;
+            --text: #ffffff;
+        }
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Keeping it entertaining! */
+            background-color: var(--bg-color);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            min-height: 100vh;
+        }
+        h1 {
+            text-shadow: 2px 2px 10px var(--primary);
+            font-size: 3rem;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px var(--secondary);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+        }
+        input { width: 80%; }
+        button {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        button:hover { transform: scale(1.05); }
+        
+        /* Chat specific styles */
+        #chat-box {
+            display: none; /* Hidden until registered */
+        }
+        #messages {
+            height: 300px;
+            background: #fff;
+            color: #000;
+            overflow-y: auto;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        .msg { padding: 5px; border-bottom: 1px solid #eee; }
+        .msg span { font-weight: bold; color: var(--primary); }
+        
+        nav a { color: var(--secondary); text-decoration: none; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+
+    <h1>✨ Neon Chatter ✨</h1>
+    <nav><a href="game.html">🎲 Play Truth or Dare</a></nav>
+
+    <div class="container" id="login-box">
+        <h2>Enter your awesome name:</h2>
+        <input type="text" id="username" placeholder="Captain Awesome...">
+        <button onclick="joinChat()">Join the Chaos</button>
+    </div>
+
+    <div class="container" id="chat-box">
+        <h2>Live Chat</h2>
+        <div id="messages">
+            </div>
+        <input type="text" id="msg-input" placeholder="Say something funny...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        let myName = "";
+
+        function joinChat() {
+            const nameInput = document.getElementById('username').value;
+            if (nameInput.trim() !== "") {
+                myName = nameInput;
+                document.getElementById('login-box').style.display = 'none';
+                document.getElementById('chat-box').style.display = 'block';
+                addMessage("System", `${myName} just slid into the chat!`);
+            }
+        }
+
+        function sendMessage() {
+            const msgInput = document.getElementById('msg-input');
+            const text = msgInput.value;
+            if (text.trim() !== "") {
+                // In a real app, you would send this to Firebase here!
+                addMessage(myName, text);
+                msgInput.value = "";
+            }
+        }
+
+        function addMessage(sender, text) {
+            const msgsDiv = document.getElementById('messages');
+            msgsDiv.innerHTML += `<div class="msg"><span>${sender}:</span> ${text}</div>`;
+            msgsDiv.scrollTop = msgsDiv.scrollHeight; // Auto-scroll to bottom
+        }
+    </script>
+</body>
+</html>
