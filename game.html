@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truth or Dare!</title>
+    <style>
+        /* Reusing our cool theme */
+        body {
+            background-color: #1a1a2e; color: #ffffff; text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif; padding-top: 50px;
+        }
+        h1 { color: #00f0ff; text-shadow: 2px 2px 10px #ff007f; font-size: 3rem;}
+        .card {
+            background: #2a2a4a; padding: 40px; margin: 20px auto;
+            width: 80%; max-width: 400px; border-radius: 20px;
+            box-shadow: 0px 10px 30px rgba(255, 0, 127, 0.5);
+            font-size: 1.5rem; min-height: 100px;
+        }
+        button {
+            padding: 15px 30px; margin: 10px; font-size: 1.2rem;
+            border: none; border-radius: 50px; cursor: pointer; color: white;
+            font-weight: bold; transition: 0.3s;
+        }
+        .btn-truth { background-color: #00f0ff; color: #000; }
+        .btn-dare { background-color: #ff007f; }
+        button:hover { transform: scale(1.1); }
+        a { color: white; margin-top: 30px; display: block; }
+    </style>
+</head>
+<body>
+
+    <h1>🔥 Truth or Dare 🔥</h1>
+    
+    <div class="card" id="display-area">
+        Click a button if you dare...
+    </div>
+
+    <button class="btn-truth" onclick="getTruth()">TRUTH</button>
+    <button class="btn-dare" onclick="getDare()">DARE</button>
+
+    <a href="index.html">⬅ Back to Chat</a>
+
+    <script>
+        const truths = [
+            "What's the most embarrassing thing you've ever texted the wrong person?",
+            "If you had to smell like one food for the rest of your life, what would it be?",
+            "What is your most bizarre habit?",
+            "Who in this chat room would you want with you in a zombie apocalypse?"
+        ];
+
+        const dares = [
+            "Type a message using only your nose.",
+            "Send the last photo in your camera roll to the chat.",
+            "Speak your next message like Yoda.",
+            "Let another player choose your chat name for the next 10 minutes."
+        ];
+
+        function getTruth() {
+            const random = Math.floor(Math.random() * truths.length);
+            document.getElementById('display-area').innerHTML = `<span style="color:#00f0ff">TRUTH:</span><br>${truths[random]}`;
+        }
+
+        function getDare() {
+            const random = Math.floor(Math.random() * dares.length);
+            document.getElementById('display-area').innerHTML = `<span style="color:#ff007f">DARE:</span><br>${dares[random]}`;
+        }
+    </script>
+</body>
+</html>
