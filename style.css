@@ -1,0 +1,107 @@
+:root {
+    --bg-color: #0f0c29; /* Deeper dark background */
+    --primary: #ff007f;
+    --secondary: #00f0ff;
+    --tertiary: #8a2be2;
+    --text: #ffffff;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    /* Adding a cool gradient background */
+    background: linear-gradient(to bottom right, var(--bg-color), #302b63, #24243e);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* Adding a pulsing glow animation to the title */
+@keyframes neonPulse {
+    0% { text-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary); }
+    50% { text-shadow: 0 0 20px var(--secondary), 0 0 30px var(--secondary); }
+    100% { text-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary); }
+}
+
+h1 {
+    font-size: 3.5rem;
+    animation: neonPulse 2s infinite alternate; /* Applies the animation */
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 20px;
+    /* Adding a glassmorphism blur effect */
+    backdrop-filter: blur(10px); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+input { 
+    width: 80%; 
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 25px;
+    border: 2px solid var(--tertiary);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 1rem;
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 10px var(--secondary);
+}
+
+button {
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    font-size: 1.1rem;
+    background: linear-gradient(45deg, var(--primary), var(--tertiary));
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4);
+}
+
+button:hover { 
+    transform: translateY(-3px) scale(1.05); 
+    box-shadow: 0 6px 20px rgba(0, 240, 255, 0.6);
+}
+
+#messages {
+    height: 350px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    overflow-y: auto;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: left;
+    margin-bottom: 15px;
+    border: 1px solid var(--tertiary);
+}
+
+/* Styling the individual chat bubbles */
+.msg { 
+    padding: 8px 12px; 
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    width: fit-content;
+    max-width: 80%;
+}
+
+.msg span { 
+    font-weight: bold; 
+    color: var(--secondary); 
+    margin-right: 5px;
+}
